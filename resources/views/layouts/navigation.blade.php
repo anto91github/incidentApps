@@ -35,6 +35,15 @@
         </a>
     </li>
 
+    <li class="nav-item">
+        <a class="nav-link {{ request()->is('permissions*') ? 'active' : ''}}" href="{{ route('incident.index') }}">
+            <svg class="nav-icon">
+                <use xlink:href="{{ asset('icons/coreui.svg#cil-room') }}"></use>
+            </svg>
+            Incident
+        </a>
+    </li>
+
     <li class="nav-group" aria-expanded="false">
         <a class="nav-link nav-group-toggle" href="#">
             <svg class="nav-icon">

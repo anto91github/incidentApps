@@ -11,8 +11,12 @@ Incident List
             <h5 class="card-title">Incident</h5>
             <h6 class="card-subtitle mb-2 text-muted"> Manage Incident.</h6>
 
+            <div class="mt-2">
+                @include('layouts.includes.messages')
+            </div>
+
             <div class="mb-2 text-end">
-                <a href="#" class="btn btn-primary btn-sm float-right">Add Incident</a>
+                <a href="{{ route('incident.create') }}" class="btn btn-primary btn-sm float-right">Add Incident</a>
             </div>
 
             <table class="table table-striped">
@@ -34,9 +38,13 @@ Incident List
                         <td>{{ $data->division }}</td>
                         <td>{{ $data->report_by }}</td>
                         <td>{{ $data->status}}</td>
-                        <td><a href="#" class="btn btn-info btn-sm">Show</a></td>
-                        <td><a href="#" class="btn btn-warning btn-sm">Edit</a></td>
-                        <td><a href="#" class="btn btn-danger btn-sm">Delete</a></td>
+                        <td><a href="{{ route('incident.show', $data->id) }}" class="btn btn-info btn-sm">Show</a></td>
+                        <td><a href="{{ route('incident.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a></td>
+                        <td><form action="{{ route('incident.destroy', $data->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form></td>
                     </tr>
                     @endforeach
                 </tbody>

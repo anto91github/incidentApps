@@ -55,6 +55,18 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::patch('/{user}/update', 'UsersController@update')->name('users.update');
             Route::delete('/{user}/delete', 'UsersController@destroy')->name('users.destroy');
         });
-        Route::resource('incident', IncidentController::class);
+
+        // Route::resource('incident', IncidentController::class);
+        // Route::get('/incident/nasya', [IncidentController::class, 'create']);
+        Route::group(['prefix' => 'incident'], function() {
+            Route::get('/', [App\Http\Controllers\IncidentController::class, 'index'])->name('incident.index');
+            Route::get('/create', 'IncidentController@create')->name('incident.create');
+            Route::post('/add', 'IncidentController@add')->name('incident.add');
+            Route::get('/{incident}/show', 'IncidentController@show')->name('incident.show');
+            Route::get('/{incident}/edit', 'IncidentController@edit')->name('incident.edit');
+            Route::patch('/{incident}/update', 'IncidentController@update')->name('incident.update');
+            Route::delete('/{incident}/delete', 'IncidentController@destroy')->name('incident.destroy');
+        });
+
     });
 });

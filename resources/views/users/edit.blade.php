@@ -41,12 +41,10 @@ Edit User
                     </div>
                     <div class="mb-3">
                         <label for="role" class="form-label">Role</label>
-                        <select class="form-control" name="role" required>
+                        <select class="form-control" name="role" >
                             <option value="">Select role</option>
                             @foreach($roles as $role)
-                            <option value="{{ $role->id }}" {{ in_array($role->name, $userRole)
-                                    ? 'selected'
-                                    : '' }}>{{ $role->name }}</option>
+                            <option value="{{ $role->id }}" {{ in_array($role->name, $userRole) ? 'selected' : '' }}>{{ $role->name }}</option>
                             @endforeach
                         </select>
                         @if ($errors->has('role'))

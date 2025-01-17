@@ -3,7 +3,6 @@
 @section('title')
 Show Incident
 @endsection
-
 @section('content')
 <div class="bg-light rounded">
     <div class="card">
@@ -13,7 +12,7 @@ Show Incident
             <div class="container mt-4">
                 <table class="table">
                     <tr>
-                        <td><strong>Name of Incident Informant :</strong></td>
+                        <td width="50%"><strong>Name of Incident Informant :</strong></td>
                         <td>{{ $data->report_by }}</td>
                     </tr>
                     <tr>
@@ -29,7 +28,7 @@ Show Incident
                 style="margin-top: 20px; margin-bottom: 10px; border: none; height: 2px; background-color: #ffffff;">
                 <table class="table">
                     <tr>
-                        <td><strong>Subject of Incident :</strong></td>
+                        <td width="50%"><strong>Subject of Incident :</strong></td>
                         <td>{{ $data->incident_name }}</td>
                     </tr>
                     <tr>
@@ -53,7 +52,7 @@ Show Incident
                 style="margin-top: 20px; margin-bottom: 10px; border: none; height: 2px; background-color: #ffffff;">
                 <table class="table">
                     <tr>
-                        <td><strong>Person Handles Incidents :</strong></td>
+                        <td width="50%"><strong>Person Handles Incidents :</strong></td>
                         <td>{{ $data->solved_by }}</td>
                     </tr>
                     <tr>
@@ -73,7 +72,7 @@ Show Incident
                 style="margin-top: 20px; margin-bottom: 10px; border: none; height: 2px; background-color: #ffffff;">
                 <table class="table">
                     <tr>
-                        <td><strong>Handling Status :</strong></td>
+                        <td width="50%"><strong>Handling Status :</strong></td>
                         <td>{{ $data->status }}</td>
                     </tr>
                     <tr>
@@ -88,7 +87,7 @@ Show Incident
 
                
                 <div class="mt-4">
-                    {{-- <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info">Edit</a> --}}
+                    <a href="{{ route('incident.edit', $data->id) }}" class="btn btn-info">Edit</a>
                     <a href="{{ route('incident.index') }}" class="btn btn-default">Back</a>
                 </div>
             </div>

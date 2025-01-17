@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,11 +63,13 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
             Route::get('/', [App\Http\Controllers\IncidentController::class, 'index'])->name('incident.index');
             Route::get('/create', 'IncidentController@create')->name('incident.create');
             Route::post('/add', 'IncidentController@add')->name('incident.add');
-            Route::get('/{incident}/show', 'IncidentController@show')->name('incident.show');
-            Route::get('/{incident}/edit', 'IncidentController@edit')->name('incident.edit');
-            Route::patch('/{incident}/update', 'IncidentController@update')->name('incident.update');
-            Route::delete('/{incident}/delete', 'IncidentController@destroy')->name('incident.destroy');
+            Route::get('/show/{incident}', 'IncidentController@show')->name('incident.show');
+            Route::get('/edit/{incident}', 'IncidentController@edit')->name('incident.edit');
+            Route::patch('/update/{incident}', 'IncidentController@update')->name('incident.update');
+            Route::delete('/delete/{incident}', 'IncidentController@destroy')->name('incident.destroy');
+            Route::get('/generate-pdf/{incident}', 'IncidentController@generatePdf')->name('incident.pdf');
         });
+        
 
     });
 });

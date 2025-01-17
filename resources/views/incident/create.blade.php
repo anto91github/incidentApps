@@ -16,16 +16,16 @@
                 <form method="POST" action="{{ route('incident.add') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="name" class="form-label">Name of Incident Informant</label>
+                        <label for="report_by" class="form-label">Name of Incident Informant</label>
                         <div class="form-group">
-                            <select name="name" class="form-control" required>
+                            <select name="report_by" class="form-control" required>
                                 <option value="" disabled selected>Choose Informant</option>
-                                <option value="1" {{ old('name') == '1' ? 'selected' : '' }}>1</option>
-                                <option value="2" {{ old('name') == '2' ? 'selected' : '' }}>2</option>
+                                <option value="1" {{ old('report_by') == '1' ? 'selected' : '' }}>1</option>
+                                <option value="2" {{ old('report_by') == '2' ? 'selected' : '' }}>2</option>
                             </select>
                         </div>
-                        @if ($errors->has('name'))
-                            <span class="text-danger text-left">{{ $errors->first('name') }}</span>
+                        @if ($errors->has('report_by'))
+                            <span class="text-danger text-left">{{ $errors->first('report_by') }}</span>
                         @endif
                     </div>
                     <div class="mb-3">
@@ -38,121 +38,122 @@
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="dateof" class="form-label">Time of Incident</label>
-                        <input value="{{ old('dateof') }}" type="datetime-local" class="form-control" name="dateof"
+                        <label for="incident_date" class="form-label">Time of Incident</label>
+                        <input value="{{ old('incident_date') }}" type="datetime-local" class="form-control" name="incident_date"
                             required>
 
-                        @if ($errors->has('dateof'))
-                            <span class="text-danger text-left">{{ $errors->first('dateof') }}</span>
+                        @if ($errors->has('incident_date'))
+                            <span class="text-danger text-left">{{ $errors->first('incident_date') }}</span>
                         @endif
                     </div>
                     <hr
                         style="margin-top: 40px; margin-bottom: 30px; border: none; height: 2px; background-color: #777777;">
                     <div class="mb-3">
-                        <label for="subject" class="form-label">Subject of Incident</label>
-                        <input value="{{ old('subject') }}" type="text" class="form-control" name="subject"
+                        <label for="incident_name" class="form-label">Subject of Incident</label>
+                        <input value="{{ old('incident_name') }}" type="text" class="form-control" name="incident_name"
                             placeholder="Subject" required>
 
-                        @if ($errors->has('subject'))
-                            <span class="text-danger text-left">{{ $errors->first('subject') }}</span>
+                        @if ($errors->has('incident_name'))
+                            <span class="text-danger text-left">{{ $errors->first('incident_name') }}</span>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="Incidentdesc" class="form-label">Incident Description</label>
-                        <textarea class="form-control" name="Incidentdesc" placeholder="Incident Description" required rows="4">{{ old('Incidentdesc') }}</textarea>
+                        <label for="description" class="form-label">Incident Description</label>
+                        <textarea class="form-control" name="description" placeholder="Incident Description" required rows="4">{{ old('description') }}</textarea>
 
-                        @if ($errors->has('Incidentdesc'))
-                            <span class="text-danger text-left">{{ $errors->first('Incidentdesc') }}</span>
+                        @if ($errors->has('description'))
+                            <span class="text-danger text-left">{{ $errors->first('description') }}</span>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="Incidentcause" class="form-label">Cause of the Incident</label>
-                        <textarea class="form-control" name="Incidentcause" placeholder="Cause of the Incident" required rows="2">{{ old('Incidentcause') }}</textarea>
+                        <label for="cause_incident" class="form-label">Cause of the Incident</label>
+                        <textarea class="form-control" name="cause_incident" placeholder="Cause of the Incident" required rows="2">{{ old('cause_incident') }}</textarea>
 
-                        @if ($errors->has('Incidentcause'))
-                            <span class="text-danger text-left">{{ $errors->first('Incidentcause') }}</span>
+                        @if ($errors->has('cause_incident'))
+                            <span class="text-danger text-left">{{ $errors->first('cause_incident') }}</span>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="categoryreport" class="form-label">Incident Report Recipient</label>
+                        <label for="user_pic" class="form-label">Incident Report Recipient</label>
                         <div class="form-group">
-                            <select name="categoryreport" class="form-control" required>
+                            <select name="user_pic" class="form-control" required>
                                 <option value="" disabled selected>Choose Recipient</option>
-                                <option value="1" {{ old('categoryreport') == '1' ? 'selected' : '' }}>Rudi</option>
-                                <option value="2" {{ old('categoryreport') == '2' ? 'selected' : '' }}>Edy</option>
-                                <option value="3" {{ old('categoryreport') == '3' ? 'selected' : '' }}>Alim</option>
-                                <option value="4" {{ old('categoryreport') == '4' ? 'selected' : '' }}>Lukas</option>
-                                <option value="5" {{ old('categoryreport') == '5' ? 'selected' : '' }}>Johan</option>
-                                <option value="6" {{ old('categoryreport') == '6' ? 'selected' : '' }}>Billy</option>
-                                <option value="7" {{ old('categoryreport') == '7' ? 'selected' : '' }}>Nasya</option>
-                                <option value="8" {{ old('categoryreport') == '8' ? 'selected' : '' }}>Albert</option>
-                                <option value="9" {{ old('categoryreport') == '9' ? 'selected' : '' }}>Anto</option>
-                                <option value="10" {{ old('categoryreport') == '10' ? 'selected' : '' }}>Akbar</option>
-                                <option value="11" {{ old('categoryreport') == '11' ? 'selected' : '' }}>Fajar</option>
+                                <option value="1" {{ old('user_pic') == '1' ? 'selected' : '' }}>Rudi</option>
+                                <option value="2" {{ old('user_pic') == '2' ? 'selected' : '' }}>Edy</option>
+                                <option value="3" {{ old('user_pic') == '3' ? 'selected' : '' }}>Alim</option>
+                                <option value="4" {{ old('user_pic') == '4' ? 'selected' : '' }}>Lukas</option>
+                                <option value="5" {{ old('user_pic') == '5' ? 'selected' : '' }}>Johan</option>
+                                <option value="6" {{ old('user_pic') == '6' ? 'selected' : '' }}>Billy</option>
+                                <option value="7" {{ old('user_pic') == '7' ? 'selected' : '' }}>Nasya</option>
+                                <option value="8" {{ old('user_pic') == '8' ? 'selected' : '' }}>Albert</option>
+                                <option value="9" {{ old('user_pic') == '9' ? 'selected' : '' }}>Anto</option>
+                                <option value="10" {{ old('user_pic') == '10' ? 'selected' : '' }}>Akbar</option>
+                                <option value="11" {{ old('user_pic') == '11' ? 'selected' : '' }}>Fajar</option>
                             </select>
                         </div>
-                        @if ($errors->has('categoryreport'))
-                            <span class="text-danger text-left">{{ $errors->first('categoryreport') }}</span>
+                        @if ($errors->has('user_pic'))
+                            <span class="text-danger text-left">{{ $errors->first('user_pic') }}</span>
                         @endif
                     </div>
+                    {{-- disini --}}
                     <div class="mb-3">
-                        <label for="datereport" class="form-label">Reporting Time</label>
-                        <input value="{{ old('datereport') }}" type="datetime-local" class="form-control" name="datereport"
+                        <label for="created_date" class="form-label">Reporting Time</label>
+                        <input value="{{ old('created_date') }}" type="datetime-local" class="form-control" name="created_date"
                             required>
 
-                        @if ($errors->has('datereport'))
-                            <span class="text-danger text-left">{{ $errors->first('datereport') }}</span>
+                        @if ($errors->has('created_date'))
+                            <span class="text-danger text-left">{{ $errors->first('created_date') }}</span>
                         @endif
                     </div>
                     <hr
                         style="margin-top: 40px; margin-bottom: 30px; border: none; height: 2px; background-color: #777777;">
                     <div class="mb-3">
-                        <label for="category" class="form-label">Person Handles Incidents</label>
+                        <label for="solved_by" class="form-label">Person Handles Incidents</label>
                         <div class="form-group">
-                            <select name="category" class="form-control" required>
+                            <select name="solved_by" class="form-control" required>
                                 <option value="" disabled selected>Choose Recipient</option>
-                                <option value="1" {{ old('category') == '1' ? 'selected' : '' }}>Rudi</option>
-                                <option value="2" {{ old('category') == '2' ? 'selected' : '' }}>Edy</option>
-                                <option value="3" {{ old('category') == '3' ? 'selected' : '' }}>Alim</option>
-                                <option value="4" {{ old('category') == '4' ? 'selected' : '' }}>Lukas</option>
-                                <option value="5" {{ old('category') == '5' ? 'selected' : '' }}>Johan</option>
-                                <option value="6" {{ old('category') == '6' ? 'selected' : '' }}>Billy</option>
-                                <option value="7" {{ old('category') == '7' ? 'selected' : '' }}>Nasya</option>
-                                <option value="8" {{ old('category') == '8' ? 'selected' : '' }}>Albert</option>
-                                <option value="9" {{ old('category') == '9' ? 'selected' : '' }}>Anto</option>
-                                <option value="10" {{ old('category') == '10' ? 'selected' : '' }}>Akbar</option>
-                                <option value="11" {{ old('category') == '11' ? 'selected' : '' }}>Fajar</option>
+                                <option value="1" {{ old('solved_by') == '1' ? 'selected' : '' }}>Rudi</option>
+                                <option value="2" {{ old('solved_by') == '2' ? 'selected' : '' }}>Edy</option>
+                                <option value="3" {{ old('solved_by') == '3' ? 'selected' : '' }}>Alim</option>
+                                <option value="4" {{ old('solved_by') == '4' ? 'selected' : '' }}>Lukas</option>
+                                <option value="5" {{ old('solved_by') == '5' ? 'selected' : '' }}>Johan</option>
+                                <option value="6" {{ old('solved_by') == '6' ? 'selected' : '' }}>Billy</option>
+                                <option value="7" {{ old('solved_by') == '7' ? 'selected' : '' }}>Nasya</option>
+                                <option value="8" {{ old('solved_by') == '8' ? 'selected' : '' }}>Albert</option>
+                                <option value="9" {{ old('solved_by') == '9' ? 'selected' : '' }}>Anto</option>
+                                <option value="10" {{ old('solved_by') == '10' ? 'selected' : '' }}>Akbar</option>
+                                <option value="11" {{ old('solved_by') == '11' ? 'selected' : '' }}>Fajar</option>
                             </select>
                         </div>
-                        @if ($errors->has('category'))
-                            <span class="text-danger text-left">{{ $errors->first('category') }}</span>
+                        @if ($errors->has('solved_by'))
+                            <span class="text-danger text-left">{{ $errors->first('solved_by') }}</span>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="datehandling" class="form-label">Handling Time</label>
-                        <input value="{{ old('datehandling') }}" type="datetime-local" class="form-control"
-                            name="datehandling" required>
+                        <label for="incident_handler_date" class="form-label">Handling Time</label>
+                        <input value="{{ old('incident_handler_date') }}" type="datetime-local" class="form-control"
+                            name="incident_handler_date" required>
 
-                        @if ($errors->has('datehandling'))
-                            <span class="text-danger text-left">{{ $errors->first('datehandling') }}</span>
+                        @if ($errors->has('incident_handler_date'))
+                            <span class="text-danger text-left">{{ $errors->first('incident_handler_date') }}</span>
                         @endif
                     </div>
                     <div class="mb-3">
-                        <label for="Incidentsolve" class="form-label">Incident Resolution</label>
-                        <textarea class="form-control" name="Incidentsolve" placeholder="Incident Resolution" required rows="2">{{ old('Incidentsolve') }}</textarea>
+                        <label for="solution" class="form-label">Incident Resolution</label>
+                        <textarea class="form-control" name="solution" placeholder="Incident Resolution" required rows="2">{{ old('solution') }}</textarea>
 
-                        @if ($errors->has('Incidentsolve'))
-                            <span class="text-danger text-left">{{ $errors->first('Incidentsolve') }}</span>
+                        @if ($errors->has('solution'))
+                            <span class="text-danger text-left">{{ $errors->first('solution') }}</span>
                         @endif
                     </div>
 
                     <div class="mb-3">
-                        <label for="datesolved" class="form-label">Resolution Time</label>
-                        <input value="{{ old('datesolved') }}" type="datetime-local" class="form-control"
-                            name="datesolved" required>
+                        <label for="incident_finish_date" class="form-label">Resolution Time</label>
+                        <input value="{{ old('incident_finish_date') }}" type="datetime-local" class="form-control"
+                            name="incident_finish_date" required>
 
-                        @if ($errors->has('datesolved'))
-                            <span class="text-danger text-left">{{ $errors->first('datesolved') }}</span>
+                        @if ($errors->has('incident_finish_date'))
+                            <span class="text-danger text-left">{{ $errors->first('incident_finish_date') }}</span>
                         @endif
                     </div>
                     <hr
@@ -178,23 +179,23 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="note" class="form-label">Notes</label>
-                        <textarea class="form-control" name="note" placeholder="Note" rows="2">{{ old('Note') }}</textarea>
+                        <label for="notes" class="form-label">Notes</label>
+                        <textarea class="form-control" name="notes" placeholder="Note" rows="2">{{ old('Notes') }}</textarea>
 
-                        @if ($errors->has('Note'))
-                            <span class="text-danger text-left">{{ $errors->first('Note') }}</span>
+                        @if ($errors->has('Notes'))
+                            <span class="text-danger text-left">{{ $errors->first('Notes') }}</span>
                         @endif
                     </div>
 
                     <div class="mb-3">
-                        <label for="statusproven" class="form-label">Approval from Head of IT</label>
+                        <label for="approve_date" class="form-label">Approval from Head of IT</label>
                         <div class="form-group">
-                            <input value="{{ old('statusproven') }}" type="datetime-local" class="form-control"
-                                name="statusproven">
+                            <input value="{{ old('approve_date') }}" type="datetime-local" class="form-control"
+                                name="approve_date">
 
                         </div>
-                        @if ($errors->has('statusproven'))
-                            <span class="text-danger text-left">{{ $errors->first('statusproven') }}</span>
+                        @if ($errors->has('approve_date'))
+                            <span class="text-danger text-left">{{ $errors->first('approve_date') }}</span>
                         @endif
                     </div>
                     <button type="submit" class="btn btn-primary" style="margin-top: 40px">Save Report</button>

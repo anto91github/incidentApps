@@ -45,6 +45,7 @@ Incident List
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form></td>
+                        <td><a href="{{ route('incident.pdf', $data->id) }}" class="btn btn-warning btn-sm">pdf</a></td>
                     </tr>
                     @endforeach
                 </tbody>

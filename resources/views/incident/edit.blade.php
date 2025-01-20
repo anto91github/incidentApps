@@ -19,8 +19,11 @@ Edit Incident
                         <div class="form-group">
                             <select name="report_by" class="form-control" required>
                                 <option value="" disabled selected>Choose Informant</option>
-                                <option value="1" {{ old('report_by') == '1' ? 'selected' : '' }}>1</option>
-                                <option value="2" {{ old('report_by') == '2' ? 'selected' : '' }}>2</option>
+                                @foreach ($users as $user)
+                                <option value="{{ $user->id }}" {{ old('report_by', $data->report_by) == $user->id ? 'selected' : '' }}>
+                                    {{ $user->name }} <!-- Ganti 'name' dengan kolom yang sesuai di tabel users -->
+                                </option>
+                            @endforeach
                             </select>
                         </div>
                         @if ($errors->has('report_by'))
@@ -84,31 +87,15 @@ Edit Incident
                         <div class="form-group">
                             <select name="user_pic" class="form-control" required>
                                 <option value="" disabled selected>Choose Recipient</option>
-                                <option value="1" {{ old('user_pic') == '1' ? 'selected' : '' }}>Rudi</option>
-                                <option value="2" {{ old('user_pic') == '2' ? 'selected' : '' }}>Edy</option>
-                                <option value="3" {{ old('user_pic') == '3' ? 'selected' : '' }}>Alim</option>
-                                <option value="4" {{ old('user_pic') == '4' ? 'selected' : '' }}>Lukas</option>
-                                <option value="5" {{ old('user_pic') == '5' ? 'selected' : '' }}>Johan</option>
-                                <option value="6" {{ old('user_pic') == '6' ? 'selected' : '' }}>Billy</option>
-                                <option value="7" {{ old('user_pic') == '7' ? 'selected' : '' }}>Nasya</option>
-                                <option value="8" {{ old('user_pic') == '8' ? 'selected' : '' }}>Albert</option>
-                                <option value="9" {{ old('user_pic') == '9' ? 'selected' : '' }}>Anto</option>
-                                <option value="10" {{ old('user_pic') == '10' ? 'selected' : '' }}>Akbar</option>
-                                <option value="11" {{ old('user_pic') == '11' ? 'selected' : '' }}>Fajar</option>
+                                @foreach ($users as $user)
+                                <option value="{{ $user->id }}" {{ old('user_pic', $data->user_pic) == $user->id ? 'selected' : '' }}>
+                                    {{ $user->name }} <!-- Ganti 'name' dengan kolom yang sesuai di tabel users -->
+                                </option>
+                            @endforeach
                             </select>
                         </div>
                         @if ($errors->has('user_pic'))
                             <span class="text-danger text-left">{{ $errors->first('user_pic') }}</span>
-                        @endif
-                    </div>
-                    {{-- disini --}}
-                    <div class="mb-3">
-                        <label for="created_date" class="form-label">Reporting Time</label>
-                        <input value="{{ $data->created_date }}" type="datetime-local" class="form-control" name="created_date"
-                            required>
-
-                        @if ($errors->has('created_date'))
-                            <span class="text-danger text-left">{{ $errors->first('created_date') }}</span>
                         @endif
                     </div>
                     <hr
@@ -118,17 +105,11 @@ Edit Incident
                         <div class="form-group">
                             <select name="solved_by" class="form-control" required>
                                 <option value="" disabled selected>Choose Recipient</option>
-                                <option value="1" {{ old('solved_by') == '1' ? 'selected' : '' }}>Rudi</option>
-                                <option value="2" {{ old('solved_by') == '2' ? 'selected' : '' }}>Edy</option>
-                                <option value="3" {{ old('solved_by') == '3' ? 'selected' : '' }}>Alim</option>
-                                <option value="4" {{ old('solved_by') == '4' ? 'selected' : '' }}>Lukas</option>
-                                <option value="5" {{ old('solved_by') == '5' ? 'selected' : '' }}>Johan</option>
-                                <option value="6" {{ old('solved_by') == '6' ? 'selected' : '' }}>Billy</option>
-                                <option value="7" {{ old('solved_by') == '7' ? 'selected' : '' }}>Nasya</option>
-                                <option value="8" {{ old('solved_by') == '8' ? 'selected' : '' }}>Albert</option>
-                                <option value="9" {{ old('solved_by') == '9' ? 'selected' : '' }}>Anto</option>
-                                <option value="10" {{ old('solved_by') == '10' ? 'selected' : '' }}>Akbar</option>
-                                <option value="11" {{ old('solved_by') == '11' ? 'selected' : '' }}>Fajar</option>
+                                @foreach ($users as $user)
+                                <option value="{{ $user->id }}" {{ old('solved_by', $data->solved_by) == $user->id ? 'selected' : '' }}>
+                                    {{ $user->name }} <!-- Ganti 'name' dengan kolom yang sesuai di tabel users -->
+                                </option>
+                            @endforeach
                             </select>
                         </div>
                         @if ($errors->has('solved_by'))
@@ -171,16 +152,16 @@ Edit Incident
                         <label for="status" class="form-label">Handling Status</label>
                         <div class="form-group">
                             <select name="status" class="form-control" required>
-                                <option value="" disabled selected>Choose Status</option>
-                                <option value="DONE" {{ old('status') == 'DONE' ? 'selected' : '' }}>DONE</option>
-                                <option value="ONPROGRESS" {{ old('status') == 'ONPROGRESS' ? 'selected' : '' }}>
-                                    ONPROGRESS</option>
-                                <option value="DECLINE" {{ old('status') == 'DECLINE' ? 'selected' : '' }}>DECLINE
-                                </option>
-                                <option value="APPROVED" {{ old('status') == 'APPROVED' ? 'selected' : '' }}>APPROVED
-                                </option>
+                                <option value="" disabled>Pilih Status</option>
+                                <option value="DONE" {{ old('status', $data->status) == 'DONE' ? 'selected' : '' }}>DONE</option>
+                                <option value="ONPROGRESS" {{ old('status', $data->status) == 'ONPROGRESS' ? 'selected' : '' }}>ONPROGRESS</option>
+                                <option value="DECLINE" {{ old('status', $data->status) == 'DECLINE' ? 'selected' : '' }}>DECLINE</option>
+                                <option value="APPROVED" {{ old('status', $data->status) == 'APPROVED' ? 'selected' : '' }}>APPROVED</option>
+                            
+                                @if(auth()->user()->name === 'Rudi Cendra') <!-- Cek apakah pengguna adalah Pak Rudi -->
+                                <option value="APPROVED" {{ old('status') == 'APPROVED' ? 'selected' : '' }}>APPROVED</option>
+                                @endif
                             </select>
-
                         </div>
                         @if ($errors->has('status'))
                             <span class="text-danger text-left">{{ $errors->first('status') }}</span>

@@ -25,7 +25,7 @@
         <table class="table">
             <tr>
                 <td width="30%"><strong>Name of Incident Informant </strong></td>
-                <td>{{ $data->report_by }}</td>
+                <td>{{ $name }}</td>
             </tr>
             <tr>
                 <td><strong>Division </strong></td>
@@ -53,11 +53,11 @@
             </tr>
             <tr>
                 <td><strong>Incident Report Recipient </strong></td>
-                <td>{{ $data->user_pic }}</td>
+                <td>{{  $pic }}</td>
             </tr>
             <tr>
                 <td><strong>Reporting Time </strong></td>
-                <td>{{ $data->created_date }}</td>
+                <td>{{ $data->created_at }}</td>
             </tr>
         </table>
         <hr
@@ -65,7 +65,7 @@
         <table class="table">
             <tr>
                 <td width="30%"><strong>Person Handles Incidents </strong></td>
-                <td>{{ $data->solved_by }}</td>
+                <td>{{ $solved }}</td>
             </tr>
             <tr>
                 <td><strong>Handling Time </strong></td>

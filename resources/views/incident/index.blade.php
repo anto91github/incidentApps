@@ -27,16 +27,16 @@ Incident List
                         <th scope="col">Division</th>
                         <th scope="col" width="10%">Report By</th>
                         <th scope="col" width="10%">status</th>
-                        <th scope="col" width="1%" colspan="3"></th>
+                        <th scope="col" width="1%" colspan="4"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($incidentList as $data)
+                    @foreach($incidentList as $index => $data)
                     <tr>
-                        <th scope="row">{{ $data->id }}</th>
+                        <th scope="row">{{ $index + 1 }}</th>
                         <td>{{ $data->incident_name }}</td>
                         <td>{{ $data->division }}</td>
-                        <td>{{ $data->report_by }}</td>
+                        <td>{{ $data->user['name'] }} </td>
                         <td>{{ $data->status}}</td>
                         <td><a href="{{ route('incident.show', $data->id) }}" class="btn btn-info btn-sm">Show</a></td>
                         <td><a href="{{ route('incident.edit', $data->id) }}" class="btn btn-warning btn-sm">Edit</a></td>
@@ -45,7 +45,7 @@ Incident List
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         </form></td>
-                        <td><a href="{{ route('incident.pdf', $data->id) }}" class="btn btn-warning btn-sm">pdf</a></td>
+                        <td><a href="{{ route('incident.pdf', $data->id) }}" class="btn btn-secondary btn-sm">PDF</a></td>
                     </tr>
                     @endforeach
                 </tbody>

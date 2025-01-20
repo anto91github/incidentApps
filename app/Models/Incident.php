@@ -16,9 +16,19 @@ class Incident extends Model
      */
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'report_by');
+        return $this->belongsTo(User::class,'report_by', 'id');
     }
 
+    public function pic(): BelongsTo
+    {
+        return $this->belongsTo(User::class,'user_pic', 'id');
+    }
+
+    public function solved(): BelongsTo
+    {
+        return $this->belongsTo(User::class,'solved_by', 'id');
+    }
+    
     protected $fillable = [
         'incident_name', // Tambahkan kolom ini
         'division', // Kolom lain yang diizinkan
@@ -27,7 +37,7 @@ class Incident extends Model
         'report_by',
         'incident_date',
         'user_pic',
-        'created_date',
+        'created_at',
         'created_by',
         'cause_incident',
         'solution',
